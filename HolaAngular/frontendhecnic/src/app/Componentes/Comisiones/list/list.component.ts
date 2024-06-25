@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Comision } from '../../../Modelo/Comision';
 
 @Component({
   selector: 'app-list',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './list.component.css'
 })
 export class ListComponent {
-
+  @Input() changeMode!: (message: string) => void;
+  comisiones: Comision[] = [];
+  
 }

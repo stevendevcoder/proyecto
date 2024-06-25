@@ -10,6 +10,7 @@ const routes: Routes = [
     {
       path: '', component: HomeEmpleadoComponent,
       children: [
+        { path: '', redirectTo: 'gestionar-clientes', pathMatch: 'full' },
         { path: 'gestionar-clientes', component: GestionarClientesComponent },
         { path: 'analisis-riesgo', component: AnalisisRiesgoComponent },
         { path: 'gestionar-inmuebles', component: GestionarInmueblesComponent },
@@ -22,4 +23,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
   })
-export class EmpleadoRoutingModule { }
+export class EmpleadoRoutingModule { }  

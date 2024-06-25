@@ -12,4 +12,8 @@ import { ListComponent } from '../../../Componentes/Clientes/list/list.component
 export class GestionarClientesComponent {
   mode: string = 'list';
 
+  changeMode(type: string): void {
+    this.mode = type;
+  }
+
 }

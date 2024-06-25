@@ -6,12 +6,12 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PersonaService } from './Service/persona.service';
+import { EditComponent } from './Componentes/Clientes/edit/edit.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-
     ],
     bootstrap: [
         AppComponent

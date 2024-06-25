@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-
-import { PersonaService } from '../../Service/persona.service';
-import { Persona } from '../../Modelo/Persona';
-import { Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Persona } from '../../../Modelo/Persona';
+import { PersonaService } from '../../../Service/persona.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+  styleUrl: './edit.component.css',
+  standalone: true,
+  imports: [SharedModule]
 })
-export class EditComponent implements OnInit{
+export class EditComponent {
+  @Input() changeMode!: (message: string) => void;
 
   persona :Persona=new Persona();
-  constructor(private router:Router, private service:PersonaService){}
+  constructor(private service:PersonaService){}
 
   ngOnInit(){ 
     this.Editar();
@@ -30,8 +32,7 @@ export class EditComponent implements OnInit{
   Actualizar(persona:Persona){
     this.service.updatePersona(this.persona).subscribe(data=>{
       this.persona=data;
-      alert("Actualizado con Exito...!!!" + this.persona.nombre);
-      this.router.navigate(["listar"]);
     } )
+    this.changeMode('list');
   }
 }
