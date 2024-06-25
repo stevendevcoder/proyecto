@@ -1,0 +1,50 @@
+<main class="main">
+    <div class="side-bar">
+      <span class="logo">
+        <img src="/assets/LOGO.jpeg" alt="">
+      </span>
+
+      <ul class="sections-list">
+        <li>
+          <a>Home</a>
+        </li>
+        <li>
+          <a routerLink="gestionar-clientes">Gestionar Clientes</a>
+        </li>
+        <li>
+          <a routerLink="gestionar-inmuebles">Gestionar Inmuebles</a>
+        </li>
+        <li>
+          <a routerLink="analisis-riesgo">Analisis de Riesgo</a>
+        </li>
+        <li>
+          <a routerLink="comisiones">Comisiones</a>
+        </li>
+      </ul>
+      <ul class="sections-options">
+        <li>
+          <a (click)="Salir()">Salir</a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-screen">
+      <div class="dashboard-header">
+        <div class="header-title">
+          <h3>Dashboard Principal</h3>
+          <p>Aqui puedes ver todas las funciones de la plataforma</p>
+        </div>
+        <div class="search">
+          <input placeholder="Buscar" type="text">
+        </div>
+      </div>
+      <div class="dashboard-body">
+        <router-outlet> </router-outlet>
+      </div>
+      
+      
+
+    </div>
+
+   
+</main>
+
