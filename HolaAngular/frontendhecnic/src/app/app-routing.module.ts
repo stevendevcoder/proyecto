@@ -1,9 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeAdministradorComponent } from './pages/home-administrador/home-administrador.component';
-import { HomeClienteComponent } from './pages/home-cliente/home-cliente.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
 
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 
 const routes: Routes = [
@@ -17,9 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'cliente',
-    children: [
-      { path: 'home', component: HomeClienteComponent },
-    ]
+    loadChildren: () => import('../app/pages/home-cliente/cliente.module')
+      .then(m => m.ClienteModule)
   },
   {
     path: 'empleado',

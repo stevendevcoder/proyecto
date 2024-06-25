@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                  
+
                     <tr *ngFor="let persona of personas" class="text-left">
                         <td>{{persona.id_personas}}</td>
                         <td>Cliente</td>
@@ -25,11 +25,11 @@
                             <button  class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
-            <h5 
-                *ngIf="this.personas.length === 0" 
+            <h5
+                *ngIf="this.personas.length === 0"
                 class="textoalerta text-center font-weight-bold text-secondary">
                 Todavía no hay personas
             </h5>

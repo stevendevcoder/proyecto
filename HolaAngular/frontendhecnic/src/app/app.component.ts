@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { InicioComponent } from './pages/inicio/inicio.component';
 
 @Component({
   selector: 'app-root',

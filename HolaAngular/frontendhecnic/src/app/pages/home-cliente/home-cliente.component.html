@@ -6,16 +6,19 @@
 
       <ul class="sections-list">
         <li>
-          <a>Home</a>
+          <a routerLink="buscar-inmuebles" routerLinkActive="ruta">
+            
+            Buscar inmuebles
+          </a>
         </li>
         <li>
-          <a>Gestionar usuarios</a>
+          <a routerLink="gestionar-inmuebles" routerLinkActive="ruta">Gestionar mis inmuebles</a>
         </li>
         <li>
-          <a>Inmuebles</a>
+          <a routerLink="agendar-cita" routerLinkActive="ruta">Agendar cita</a>
         </li>
         <li>
-          <a>Settings</a>
+          <a routerLink="pagos" routerLinkActive="ruta">Pagos</a>
         </li>
       </ul>
 
@@ -24,35 +27,23 @@
           <a>Ayuda</a>
         </li>
         <li>
-          <a (click)="Salir()">Salir</a>
-
+          <a class="logout" (click)="Salir()"><mat-icon>logout</mat-icon>Salir</a>
         </li>
       </ul>
     </div>
     <div class="main-screen">
       <div class="dashboard-header">
         <div class="header-title">
-          <h3>Dashboard Principal</h3>
+          <h3>Dashboard cliente</h3>
           <p>Aqui puedes ver todas las funciones de la plataforma</p>
         </div>
         <div class="search">
           <input placeholder="Buscar" type="text">
         </div>
       </div>
-      <div class="dashboard-nody">
-        <div class="ventas"></div>
-        <div class="comisiones"></div>
-        <div class="nuevos-clientes"></div>
-        <div class="citas-programadas"></div>
+      <div class="dashboard-body">
+        <router-outlet></router-outlet>
         
       </div>
-      <div class="d-flex p-3 justify-content-center gap-5">
-        <button class="btn btn-primary">Ver todos los clientes</button>
-        <button class="btn btn-primary">Agregar nuevo cliente</button>
-      </div>
-
-
     </div>
-
-   
 </main>

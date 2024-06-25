@@ -33,7 +33,7 @@ export class InicioComponent {
         this.router.navigate(['/admin/home']);
         break;
       case 'cliente':
-        this.router.navigate(['/cliente/home']);
+        this.router.navigate(['/cliente']);
         break;
       case 'empleado':
         this.router.navigate(['/empleado']);

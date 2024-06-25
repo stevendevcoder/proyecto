@@ -5,26 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-
 import { PersonaService } from './Service/persona.service';
 
-@NgModule({ 
+
+@NgModule({
     declarations: [
         AppComponent,
+
     ],
     bootstrap: [
         AppComponent
-    ], 
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-       
-    ], 
+
+    ],
     providers: [
-        PersonaService, 
-        provideHttpClient(withInterceptorsFromDi()), 
-        provideAnimationsAsync()] 
+        PersonaService,
+        provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync()]
     })
 export class AppModule { }

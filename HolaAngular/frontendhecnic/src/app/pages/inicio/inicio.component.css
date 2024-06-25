@@ -32,13 +32,10 @@ h1 {
     border-radius: 35px;
     width: 450px;
     height: 240px;
-
-    font-size: 20px;    
+    font-size: 20px;
     transition: all .5s;
     color: #fff;
     font-weight: bold;
-    
-
 }
 
 .container div:hover {
@@ -50,30 +47,31 @@ box-shadow: 6px 10px 26px 0px rgba(0,0,0,0.75);
 }
 
 #administrador {
-    background: 
+    background:
     linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
     url('../../../assets/admin.png')
     ;
-    background-size: contain; 
-    background-position: center; 
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    background-color: #000000; 
+    background-color: black;
+
 }
 #empleado {
-    background: 
+    background:
     linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
-    url('../../../assets/empleado.png')
-    ;
-    background-size: contain; 
-    background-position: center; 
+    url('../../../assets/empleado.png');
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    background-color: #570E28; 
+    background-color: #fff;
+
 }
 #cliente {
-    background: 
+    background:
     linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
-    url('../../../assets/cliente.png')
-    ;
+    url('../../../assets/cliente.png');
     background-color: black;
 }
+
 

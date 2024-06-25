@@ -63,7 +63,6 @@ ul {
 }
 
 ul li {
-    
     justify-content: center;
     margin: 0;
     padding: 0;
@@ -74,9 +73,7 @@ ul li {
     color: #fff;
 }
 
-ul li .in {
 
-} 
 
 .main-screen {
     margin-left: 220px; /* Same width as the sidebar */
@@ -87,27 +84,23 @@ ul li .in {
 }
 
 ul li a {
-    
     display: flex;
     gap: 5px;
     color: rgb(255, 255, 255);
     padding: 10px 20px;
-    
     border-radius: 15px;
     cursor: pointer;
     transition: all .2s;
     text-decoration: none;
-}   
+}
 
 .ruta {
     background-color: #2203036e;
-    
     transition: all .2s;
 }
 
 .logout:hover{
     background-color: #2203036e;
-    
     transition: all .2s;
 }
 
@@ -129,7 +122,6 @@ ul li a {
     gap: 20px;
     overflow-y: auto;
     padding-block: 40px; /* To add some padding at the bottom */
-
 }
 
 
@@ -137,7 +129,6 @@ ul li a {
 .dashboard-body section {
     min-width: 70%;
     height: fit-content;
-   
     border-radius: 25px;
     border: 1px solid #570E28;
     padding: 20px;

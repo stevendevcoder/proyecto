@@ -19,15 +19,13 @@ import { EditComponent as EditSucursalComponent} from '../../Componentes/Sucursa
   styleUrl: './home-administrador.component.css',
   standalone: true,
   imports: [
-    SharedModule, 
-    ListPersonaComponent, 
-    AddPersonaComponent, 
+    SharedModule,
+    ListPersonaComponent,
+    AddPersonaComponent,
     EditPersonaComponent,
     ListSucursalComponent,
     AddSucursalComponent,
     EditSucursalComponent,
-
-    
   ],
 })
 
@@ -37,13 +35,11 @@ export class HomeAdministradorComponent {
 
 
   constructor(private router:Router) {
-    
   }
 
   cambiar(){
     this.formPersonas = 'add'
   }
-  
   Salir(){
     this.router.navigate(['inicio']);
   }

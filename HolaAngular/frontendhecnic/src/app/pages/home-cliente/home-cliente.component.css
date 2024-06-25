@@ -22,10 +22,11 @@ p {
 
 .side-bar {
     background-color: #570E28;
-
     max-width: 220px;
     height: 100vh;
-
+    position: fixed;
+    top: 0;
+    left: 0;
     display: grid;
     grid-template-rows: min-content 1fr 1fr;
     align-content: space-between;
@@ -35,6 +36,10 @@ p {
 
 .logo,.sections-list, .sections-options{
     width: 100%;
+}
+
+.sections-options {
+    border-top: 1px #444444 solid;
 }
 
 .logo {
@@ -58,7 +63,6 @@ ul {
 }
 
 ul li {
-    
     justify-content: center;
     margin: 0;
     padding: 0;
@@ -66,7 +70,6 @@ ul li {
     list-style: none;
     text-align: left;
     padding-block: 10px;
-    
 }
 
 .main-screen {
@@ -74,6 +77,37 @@ ul li {
     width: 100%;
 
 
+    color: #fff;
+}
+
+
+.main-screen {
+    margin-left: 220px; /* Same width as the sidebar */
+    height: 100vh;
+    width: calc(100% - 220px);
+    display: flex;
+    flex-direction: column;
+}
+
+ul li a {
+    display: flex;
+    gap: 5px;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all .2s;
+    text-decoration: none;
+}
+
+.ruta {
+    background-color: #2203036e;
+    transition: all .2s;
+}
+
+ul li :hover{
+    background-color: #2203036e;
+    transition: all .2s;
 }
 
 .dashboard-header {
@@ -86,8 +120,33 @@ ul li {
     padding: 20px 40px;
 }
 
+
 a {
     cursor: pointer;
+}
+.dashboard-body {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    overflow-y: auto;
+    padding-block: 40px; /* To add some padding at the bottom */
+}
+
+
+
+.dashboard-body section {
+    min-width: 70%;
+    height: fit-content;
+    border-radius: 25px;
+    border: 1px solid #570E28;
+    padding: 20px;
+}
+.dashboard-body section h2 {
+    text-align: center;
 }
 
 .search input {
@@ -97,4 +156,10 @@ a {
     background: #F3F3F3;
     outline: none;
     padding: 15px 20px;
+}
+
+button {
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
 }

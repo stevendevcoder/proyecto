@@ -17,7 +17,7 @@
         <li>
           <a class="logout" (click)="Salir()">
             <mat-icon>logout</mat-icon>
-            Salir 
+            Salir
           </a>
         </li>
       </ul>
@@ -47,7 +47,7 @@
             </div>
             <!--Sucursales Listar-->
             <app-sucursal-list *ngIf="formSucursales == 'list'"></app-sucursal-list>
-            
+
             <!--Sucursales Editar-->
             <app-sucursal-edit *ngIf="formSucursales == 'edit'"></app-sucursal-edit>
 
@@ -68,16 +68,12 @@
                   Agregar persona
                 </button>
             </div>
-           
+
             <app-persona-list *ngIf="formPersonas == 'list'"></app-persona-list>
             <app-persona-edit *ngIf="formPersonas == 'edit'"></app-persona-edit>
             <app-persona-add *ngIf="formPersonas == 'add'"></app-persona-add>
-            
+
         </section>
       </div>
-
-
     </div>
-
-   
 </main>
