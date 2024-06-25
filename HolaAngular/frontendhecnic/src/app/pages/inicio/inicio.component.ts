@@ -3,14 +3,8 @@ import { Router, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { FormsModule } from '@angular/forms';
 import {} from '@angular/common/http';
 
-import { AppRoutingModule } from '../../app-routing.module';
-
-import { HomeAdministradorComponent } from '../home-administrador/home-administrador.component';
-import { HomeClienteComponent } from '../home-cliente/home-cliente.component';
-import { HomeEmpleadoComponent } from '../home-empleado/home-empleado.component';
 import { SharedModule } from '../../shared/shared.module';
 
 @Component({

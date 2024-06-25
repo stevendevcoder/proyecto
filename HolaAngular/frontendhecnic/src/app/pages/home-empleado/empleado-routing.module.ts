@@ -8,14 +8,13 @@ import { GestionarClientesComponent } from "./gestionar-clientes/gestionar-clien
 
 const routes: Routes = [
     {
-      path: '',
-      component: HomeEmpleadoComponent,
+      path: '', component: HomeEmpleadoComponent,
       children: [
         { path: 'gestionar-clientes', component: GestionarClientesComponent },
         { path: 'analisis-riesgo', component: AnalisisRiesgoComponent },
         { path: 'gestionar-inmuebles', component: GestionarInmueblesComponent },
         { path: 'comisiones', component: ComisionesComponent }
-        ]
+      ]
     }
 ];
 

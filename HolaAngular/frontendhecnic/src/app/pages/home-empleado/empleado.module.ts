@@ -10,15 +10,13 @@ import { GestionarClientesComponent } from "./gestionar-clientes/gestionar-clien
 
 @NgModule({
     declarations: [
-       GestionarInmueblesComponent,
-       AnalisisRiesgoComponent,
-       ComisionesComponent,
-       GestionarClientesComponent
+
     ],
     imports: [
         CommonModule,
         EmpleadoRoutingModule,
-        HomeEmpleadoComponent
+        HomeEmpleadoComponent,
+
     ]
 })
 export class EmpleadoModule{ }

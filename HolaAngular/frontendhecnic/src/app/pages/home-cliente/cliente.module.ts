@@ -10,10 +10,7 @@ import { PagosComponent } from "./pagos/pagos.component";
 
 @NgModule({
     declarations: [
-        BusquedaInmueblesComponent,
-        AgendarCitaComponent,
-        GestionarInmueblesComponent,
-        PagosComponent
+     
     ],
     imports: [
         CommonModule,

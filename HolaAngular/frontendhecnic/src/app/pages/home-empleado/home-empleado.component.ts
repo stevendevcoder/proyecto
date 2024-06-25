@@ -14,7 +14,7 @@ export class HomeEmpleadoComponent {
   ruta: string = 'gestionar-clientes';
 
   constructor(private router:Router) {
-    
+
   }
 
   Salir(){
