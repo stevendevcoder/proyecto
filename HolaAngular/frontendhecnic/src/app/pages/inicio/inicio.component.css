@@ -1,0 +1,72 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    padding-block: 30px;
+}
+
+
+.container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid black;
+    text-transform: uppercase;
+    border-radius: 35px;
+    width: 450px;
+    height: 240px;
+
+    font-size: 20px;    
+    transition: all .5s;
+    color: #fff;
+    font-weight: bold;
+    
+
+}
+
+.container div:hover {
+    transform: scale(1.1);
+    -webkit-box-shadow: 6px 10px 26px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 6px 10px 26px 0px rgba(0,0,0,0.75);
+box-shadow: 6px 10px 26px 0px rgba(0,0,0,0.75);
+    transition: all .4s;
+}
+
+#administrador {
+    background: 
+    linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    url('../../../assets/admin.png')
+    ;
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+#empleado {
+    background: 
+    linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    url('../../../assets/empleado.png')
+    ;
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+#cliente {
+    background: 
+    linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)),
+    url('../../../assets/cliente.png')
+    ;
+}
