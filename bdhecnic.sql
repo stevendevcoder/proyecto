@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-06-2024 a las 16:38:31
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.4.27
+-- Tiempo de generación: 26-06-2024 a las 19:03:33
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdhecnic`  
+-- Base de datos: `bdhecnic`
 --
 
 -- --------------------------------------------------------
@@ -125,10 +125,20 @@ CREATE TABLE `inmuebles` (
   `precio` int(11) DEFAULT NULL,
   `tipo` enum('Casa','Apartamento','Oficina') DEFAULT NULL,
   `estado` enum('Disponible','Vendido','Arrendado') DEFAULT NULL,
+  `direccion` varchar(100) NOT NULL,
   `id_cliente` int(11) DEFAULT NULL,
-  `id_ciudad` int(11) DEFAULT NULL,
-  `imagenes` blob DEFAULT NULL
+  `id_ubicacion` int(11) DEFAULT NULL,
+  `imagenes` blob DEFAULT NULL,
+  `habitaciones` int(11) NOT NULL,
+  `estrato` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inmuebles`
+--
+
+INSERT INTO `inmuebles` (`id_inmueble`, `descripcion`, `precio`, `tipo`, `estado`, `direccion`, `id_cliente`, `id_ubicacion`, `imagenes`, `habitaciones`, `estrato`) VALUES
+(1, 'asease', 12123, 'Casa', 'Disponible', '', 2, 1, NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -155,6 +165,14 @@ CREATE TABLE `personas` (
   `telefono` int(11) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `personas`
+--
+
+INSERT INTO `personas` (`id_personas`, `nombre`, `telefono`, `email`) VALUES
+(1, 'Jhoan', 30000, 'hectirx@gmail.com'),
+(2, 'G', 556, '');
 
 -- --------------------------------------------------------
 
@@ -220,7 +238,7 @@ CREATE TABLE `sucursales` (
 
 CREATE TABLE `tipospersonas` (
   `id_TipoPersonas` int(11) NOT NULL,
-  `tipo` varchar(255) DEFAULT NULL
+  `tipo` enum('Administrador','Empleado','Cliente') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -235,6 +253,13 @@ CREATE TABLE `ubicacionesgeograficas` (
   `Ciudad` varchar(255) DEFAULT NULL,
   `Departamento` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ubicacionesgeograficas`
+--
+
+INSERT INTO `ubicacionesgeograficas` (`id_ubicacion`, `Pais`, `Ciudad`, `Departamento`) VALUES
+(1, 'colombia', 'Bogota', 'Cundinamarca');
 
 -- --------------------------------------------------------
 
@@ -310,7 +335,7 @@ ALTER TABLE `estudiosderiesgo`
 ALTER TABLE `inmuebles`
   ADD PRIMARY KEY (`id_inmueble`),
   ADD KEY `id_cliente` (`id_cliente`),
-  ADD KEY `id_ciudad` (`id_ciudad`);
+  ADD KEY `id_ciudad` (`id_ubicacion`);
 
 --
 -- Indices de la tabla `pagocuentasdecobros`
@@ -421,7 +446,7 @@ ALTER TABLE `estudiosderiesgo`
 -- AUTO_INCREMENT de la tabla `inmuebles`
 --
 ALTER TABLE `inmuebles`
-  MODIFY `id_inmueble` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_inmueble` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `pagocuentasdecobros`
@@ -433,7 +458,7 @@ ALTER TABLE `pagocuentasdecobros`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id_personas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_personas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `personasarriendo`
@@ -469,7 +494,7 @@ ALTER TABLE `tipospersonas`
 -- AUTO_INCREMENT de la tabla `ubicacionesgeograficas`
 --
 ALTER TABLE `ubicacionesgeograficas`
-  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
@@ -528,7 +553,7 @@ ALTER TABLE `estudiosderiesgo`
 --
 ALTER TABLE `inmuebles`
   ADD CONSTRAINT `inmuebles_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `personas` (`id_personas`),
-  ADD CONSTRAINT `inmuebles_ibfk_2` FOREIGN KEY (`id_ciudad`) REFERENCES `ubicacionesgeograficas` (`id_ubicacion`);
+  ADD CONSTRAINT `inmuebles_ibfk_2` FOREIGN KEY (`id_ubicacion`) REFERENCES `ubicacionesgeograficas` (`id_ubicacion`);
 
 --
 -- Filtros para la tabla `pagocuentasdecobros`

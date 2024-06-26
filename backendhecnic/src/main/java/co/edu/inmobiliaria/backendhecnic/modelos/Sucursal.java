@@ -13,9 +13,8 @@ public class Sucursal {
     private int id_sucursales;
     
 
-
-    @ManyToOne
-    @JoinColumn(name = "id_ubicacion", referencedColumnName = "id_ubicacion")
+    
+    @Column(name = "id_ubicacion")
     private int id_ubicacion;
 
 
