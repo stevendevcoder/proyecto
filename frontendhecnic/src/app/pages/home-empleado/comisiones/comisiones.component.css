@@ -1,3 +1,8 @@
+:host {
+    min-width: 800px;
+}
+
+
 section {
     min-width: 80%;
     height: fit-content;

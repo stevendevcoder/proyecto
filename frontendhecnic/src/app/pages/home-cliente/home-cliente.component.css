@@ -9,6 +9,7 @@
 
 h3 {
     font-size: 30px;
+    color: black;
 }
 
 h3, p {
@@ -22,16 +23,25 @@ p {
 
 .side-bar {
     background-color: #570E28;
-    max-width: 220px;
+    max-width: 240px;
     height: 100vh;
     position: fixed;
+    flex: 1;
+    overflow-y: auto;
     top: 0;
     left: 0;
     display: grid;
     grid-template-rows: min-content 1fr 1fr;
     align-content: space-between;
-    padding: 40px 40px;
+    padding: 30px 20px;
     color: #fff;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
+}
+
+.side-bar::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
 }
 
 .logo,.sections-list, .sections-options{
@@ -91,9 +101,10 @@ ul li {
 
 ul li a {
     display: flex;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
     color: rgb(255, 255, 255);
-    padding: 10px 20px;
+    padding: 15px 20px;
     border-radius: 15px;
     cursor: pointer;
     transition: all .2s;
@@ -133,7 +144,9 @@ a {
     align-items: center;
     gap: 20px;
     overflow-y: auto;
-    padding-block: 40px; /* To add some padding at the bottom */
+    padding-block: 10px 40px; /* To add some padding at the bottom */
+    scrollbar-color:  rgba(231, 231, 231, 0.233) rgba(192, 192, 192, 0.712);;
+    scrollbar-width: thin;
 }
 
 

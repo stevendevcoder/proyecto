@@ -1,1 +1,55 @@
-<p>agendar-cita works!</p>
+<div class="contact-form">
+    <h2>Contactar</h2>
+    <form>
+        <div class="form-group">
+            <label for="nombre">Nombre propietario</label>
+            <input type="text" id="nombre" name="nombre" value="Moqups" disabled>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" value="contact@moqups.com" disabled>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Numero de telefono</label>
+            <input type="text" id="telefono" name="telefono" value="Product Manager" disabled>
+        </div>
+        <div class="form-group">
+            <label>Razon de consulta</label>
+            <div class="radio-group">
+                <label><input type="radio" name="razon" value="arrendar" checked> Arrendar</label>
+                <label><input type="radio" name="razon" value="vender"> Vender</label>
+                <label><input type="radio" name="razon" value="comprar"> Comprar</label>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <select id="ciudad" name="ciudad">
+                    <option value="">Seleccionar ciudad</option>
+                    <!-- Add more options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="estrato">Estrato</label>
+                <select id="estrato" type="number" name="estrato">
+                    <option value="">Seleccionar Estrato</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="habitaciones">Habitaciones</label>
+                <input type="number" id="habitaciones" name="habitaciones" value="3">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button type="submit" class="submit-btn">Consulta</button>
+        </div>
+    </form>
+</div>

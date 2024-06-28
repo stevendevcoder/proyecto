@@ -17,6 +17,8 @@ export class Inmueble {
     tipo: TipoInmueble = TipoInmueble.Casa;
     estado: EstadoInmueble = EstadoInmueble.Arrendado;
     imagenes: Blob[] = [];
+    habitaciones: number = 0;
+    estrato: number = 0;
 
     //Foraneas
     id_cliente: number = 0;

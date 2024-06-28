@@ -22,16 +22,20 @@ p {
 
 .side-bar {
     background-color: #570E28;
-    max-width: 220px;
+    max-width: 240px;
     height: 100vh;
     position: fixed;
+    flex: 1;
+    overflow-y: auto;
     top: 0;
     left: 0;
     display: grid;
     grid-template-rows: min-content 1fr 1fr;
     align-content: space-between;
-    padding: 40px 40px;
+    padding: 30px 20px;
     color: #fff;
+    scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
 }
 
 .logo,.sections-list, .sections-options{
@@ -91,9 +95,10 @@ ul li {
 
 ul li a {
     display: flex;
-    gap: 5px;
-    color: rgb(255, 255, 255);
-    padding: 10px 20px;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    padding: 15px 20px;
     border-radius: 15px;
     cursor: pointer;
     transition: all .2s;

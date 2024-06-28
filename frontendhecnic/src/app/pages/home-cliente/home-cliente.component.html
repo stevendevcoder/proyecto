@@ -7,25 +7,31 @@
       <ul class="sections-list">
         <li>
           <a routerLink="buscar-inmuebles" routerLinkActive="ruta">
-            
+            <mat-icon>apartment</mat-icon>
             Buscar inmuebles
           </a>
         </li>
         <li>
-          <a routerLink="gestionar-inmuebles" routerLinkActive="ruta">Gestionar mis inmuebles</a>
+          <a routerLink="gestionar-inmuebles" routerLinkActive="ruta">
+            <mat-icon>real_estate_agent</mat-icon>
+            Mis inmuebles
+          </a>
         </li>
         <li>
-          <a routerLink="agendar-cita" routerLinkActive="ruta">Agendar cita</a>
+          <a routerLink="agendar-cita" routerLinkActive="ruta">
+            <mat-icon>calendar_month</mat-icon>
+            Agendar cita
+          </a>
         </li>
         <li>
-          <a routerLink="pagos" routerLinkActive="ruta">Pagos</a>
+          <a routerLink="pagos" routerLinkActive="ruta">
+            <mat-icon>attach_money</mat-icon>
+            Pagos
+          </a>
         </li>
       </ul>
 
       <ul class="sections-options">
-        <li>
-          <a>Ayuda</a>
-        </li>
         <li>
           <a class="logout" (click)="Salir()"><mat-icon>logout</mat-icon>Salir</a>
         </li>
@@ -34,7 +40,7 @@
     <div class="main-screen">
       <div class="dashboard-header">
         <div class="header-title">
-          <h3>Dashboard cliente</h3>
+          <h3>Dashboard de cliente</h3>
           <p>Aqui puedes ver todas las funciones de la plataforma</p>
         </div>
         <div class="search">
