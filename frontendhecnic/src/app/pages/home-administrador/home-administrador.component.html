@@ -36,42 +36,38 @@
         <section>
             <h2 class="text-center">Gestionar Sucursales</h2>
             <div class="d-flex p-3 justify-content-left gap-2">
-                <button (click)="this.formSucursales='list'" class="btn btn-primary p-2">
+                <button (click)="formSucursales='list'" class="btn btn-primary p-2">
                   <mat-icon>list</mat-icon>
                   Ver todas las sucursales
                 </button>
-                <button (click)="this.formSucursales='add'" class="btn btn-primary p-2">
+                <button (click)="formSucursales='add'" class="btn btn-primary p-2">
                   <mat-icon>add</mat-icon>
                   Agregar nueva sucursal
                 </button>
             </div>
-            <!--Sucursales Listar-->
-            <app-sucursal-list *ngIf="formSucursales == 'list'"></app-sucursal-list>
 
-            <!--Sucursales Editar-->
-            <app-sucursal-edit *ngIf="formSucursales == 'edit'"></app-sucursal-edit>
-
-            <!--Sucursales Agregar-->
-            <app-sucursal-add *ngIf="formSucursales == 'add'"></app-sucursal-add>
+            <app-sucursal-list [changeMode]="changeMode" *ngIf="formSucursales == 'list'"></app-sucursal-list>
+            <app-sucursal-edit [changeMode]="changeMode" *ngIf="formSucursales == 'edit'"></app-sucursal-edit>
+            <app-sucursal-add [changeMode]="changeMode" *ngIf="formSucursales == 'add'"></app-sucursal-add>
 
 
         </section>
         <section>
             <h2>Gestionar Personas</h2>
             <div class="d-flex p-3 justify-content-left gap-2">
-                <button (click)="this.formPersonas='list'" class="btn btn-primary p-2">
+                <button (click)="formPersonas='list'" class="btn btn-primary p-2">
                   <mat-icon>list</mat-icon>
                   Ver todas las personas
                 </button>
-                <button (click)="this.formPersonas='add'" class="btn btn-primary p-2">
+                <button (click)="formPersonas='add'" class="btn btn-primary p-2">
                   <mat-icon>add</mat-icon>
                   Agregar persona
                 </button>
             </div>
 
-            <app-persona-list *ngIf="formPersonas == 'list'"></app-persona-list>
-            <app-persona-edit *ngIf="formPersonas == 'edit'"></app-persona-edit>
-            <app-persona-add *ngIf="formPersonas == 'add'"></app-persona-add>
+            <app-persona-list [changeMode]="changeMode" *ngIf="formPersonas == 'list'"></app-persona-list>
+            <app-persona-edit [changeMode]="changeMode" *ngIf="formPersonas == 'edit'"></app-persona-edit>
+            <app-persona-add  [changeMode]="changeMode" *ngIf="formPersonas == 'add'"></app-persona-add>
 
         </section>
       </div>

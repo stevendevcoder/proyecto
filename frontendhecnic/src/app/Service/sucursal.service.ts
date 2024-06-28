@@ -7,7 +7,7 @@ import { Sucursal } from '../Modelo/Sucursal';
 })
 export class SucursalService {
 
-  private Url = 'http://localhost:8080/sucursales';
+  Url = 'http://localhost:8080/sucursales/submit';
 
   constructor(private http: HttpClient) { }
 

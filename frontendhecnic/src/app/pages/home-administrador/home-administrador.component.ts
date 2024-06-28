@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { ɵSharedStylesHost } from '@angular/platform-browser';
+
+import { ChangeDetectorRef, Component} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { ListComponent  as ListPersonaComponent} from '../../Componentes/Persona/list/list.component';
@@ -29,16 +28,21 @@ import { EditComponent as EditSucursalComponent} from '../../Componentes/Sucursa
   ],
 })
 
-export class HomeAdministradorComponent {
+export class HomeAdministradorComponent{
   formPersonas = 'list';
   formSucursales = 'list';
 
-
-  constructor(private router:Router) {
+  constructor(private router:Router, private cdr: ChangeDetectorRef) {
   }
 
-  cambiar(){
-    this.formPersonas = 'add'
+  ngOnInit(){
+    console.log("Se renderiza");
+  }
+
+  changeMode(type: string, form: Boolean): void{
+    console.log("Se cambia ", form, " a ", type);
+    form ? this.formPersonas = type : this.formSucursales = type;
+    this.cdr.detectChanges();
   }
   Salir(){
     this.router.navigate(['inicio']);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Persona } from '../../../Modelo/Persona';
 import { ServiceService } from '../../../Service/service.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { PersonaService } from '../../../Service/persona.service';
 })
 export class ListComponent {
   personas:Persona[] = [];
+  @Input() changeMode!: (type: string, form: Boolean) => void;
+
   constructor(private service:PersonaService, private router:Router){
     this.personas = [];
   }
@@ -30,21 +32,12 @@ export class ListComponent {
   Editar(persona:Persona): void{
     alert("Llegamos a Editar persona...!!!" + persona.nombre);
     localStorage.setItem("id", persona.id_personas.toString());
-    //this.router.navigate(["edit"]);
+    this.changeMode('edit', true);
   }
 
   Delete(persona:Persona): void{
     this.service.deletePersona(persona)
     .subscribe(data=>{
-
-      // let nuevaLista: Persona[] = [];
-
-      // for (let i = 0; i < this.personas.length; i++) {
-      //   if (this.personas[i] !== persona) {
-      //     nuevaLista.push(this.personas[i]);
-      //   }
-      // }
-      
       this.personas= this.personas.filter(p => p !== persona);
       alert("Eliminamos al usuario " + persona.nombre);
     });

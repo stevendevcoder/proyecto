@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sucursal-edit',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   standalone: true
 })
 export class EditComponent {
+  @Input() changeMode!: (type: string, form: Boolean) => void;
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Sucursal } from '../../../Modelo/Sucursal';
 import { SucursalService } from '../../../Service/sucursal.service';
@@ -14,6 +14,8 @@ import { UbicacionGeograficaService } from '../../../Service/ubicacion.service';
   imports: [SharedModule]
 })
 export class AddComponent {
+  @Input() changeMode!: (type: string, form: Boolean) => void;
+
   sucursal: Sucursal = new Sucursal();
   ubicaciones: UbicacionGeo[] = [];
 

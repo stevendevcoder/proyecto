@@ -14,14 +14,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     CommonModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class SharedModule { }
