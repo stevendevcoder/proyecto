@@ -16,7 +16,6 @@ export class SucursalService {
   }
 
   createSucursal(sucursal: Sucursal) {
-    alert("Llegamos al service createSucursal...!!!" + sucursal.nombreSucursal);
     return this.http.post<Sucursal>(this.Url, sucursal);
   }
 

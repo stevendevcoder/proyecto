@@ -15,20 +15,23 @@ export class PersonaService {
     return this.http.get<Persona[]>(this.Url);
   }
 
-  createPersona(persona:Persona){
-    alert("Llegamos al service createPersona...!!!" + persona.nombre);
+  getTypePersona(idpersona: number): string{
+    return this.http.get<string>(this.Url + "/" + idpersona);
+  } 
+
+  createPersona(persona: Persona){
     return this.http.post<Persona>(this.Url, persona);
   }
 
-  getPersonaId(idpersona:number){
+  getPersonaId(idpersona: number){
     return this.http.get<Persona>(this.Url+"/"+idpersona);
   }
 
-  updatePersona(persona:Persona){
+  updatePersona(persona: Persona){
     return this.http.put<Persona>(this.Url+"/"+persona.id_personas, persona);
   }
 
-  deletePersona(persona:Persona){
+  deletePersona(persona: Persona){
     return this.http.delete<Persona>(this.Url+ "/" + persona.id_personas);
   }
 }

@@ -17,7 +17,8 @@
                     <label for="">Email: </label>
                     <input type="email" [(ngModel)]="persona.email" class="form-control"  name="email">
                 </div>
-                <button (click)="Guardar()" class="btn btn-danger">Guardar</button>
+                <button type="submit" (click)="Guardar()" class="btn btn-success">Guardar</button>
+                <button (click)="Cancelar()" class="btn btn-danger">Cancelar</button>
             </form>
         </div>
     </div>

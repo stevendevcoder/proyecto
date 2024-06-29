@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { Sucursal } from '../../../Modelo/Sucursal';
 import { SucursalService } from '../../../Service/sucursal.service';
@@ -10,26 +10,29 @@ import { SucursalService } from '../../../Service/sucursal.service';
   standalone: true,
   imports: [SharedModule]
 })
-export class ListComponent {
-  sucursales: Sucursal[] = []
+export class ListComponent implements OnInit {
+  sucursales: Sucursal[] = [];
+  @Input() changeMode!: (type: string, form: boolean) => void;
 
-  @Input() changeMode!: (type: string, form: Boolean) => void;
-
-  constructor(private service:SucursalService){
-
-  }
+  constructor(
+    private service: SucursalService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.service.getSucursales()
-    .subscribe(data=>{
-      this.sucursales=data;
-    })
+    this.loadSucursales();
   }
 
-  Delete(sucursal: Sucursal){
-    this.service.deleteSucursal(sucursal.id_sucursales)
-    .subscribe(data=>{
-      this.sucursales= this.sucursales.filter(p => p !== sucursal);
+  loadSucursales() {
+    this.service.getSucursales().subscribe(data => {
+      this.sucursales = data;
+      this.cdr.detectChanges(); // Forzar la detección de cambios
+    });
+  }
+
+  Delete(sucursal: Sucursal) {
+    this.service.deleteSucursal(sucursal.id_sucursales).subscribe(() => {
+      this.loadSucursales(); // Recargar la lista después de eliminar
       alert("Eliminamos la sucursal " + sucursal.nombreSucursal);
     });
   }

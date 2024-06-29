@@ -12,7 +12,7 @@ import { SharedModule } from '../../../shared/shared.module';
   imports: [SharedModule]
 })
 export class AddComponent {
-  @Input() changeMode!: (type: string, form: Boolean) => void;
+  @Input() changeMode!: (type: string, form: boolean) => void;
   persona = new Persona();
 
   constructor(private service:PersonaService){}
@@ -20,13 +20,18 @@ export class AddComponent {
   ngOnInit(){
   }
 
+  Cancelar(){
+    this.changeMode('cancel', true);
+  }
+
+
   Guardar(){
     console.log("Nombres: " + this.persona.nombre)
     alert("Nombres: " + this.persona.nombre);
     
     this.service.createPersona(this.persona)
     .subscribe(data=>{
-      alert("Se agrego la persona con Exito...!!!");
+      console.log("Se agrego la persona ", this.persona, " con exito");
     })
 
     this.changeMode('list', true);

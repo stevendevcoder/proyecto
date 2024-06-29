@@ -14,7 +14,7 @@ import { UbicacionGeograficaService } from '../../../Service/ubicacion.service';
   imports: [SharedModule]
 })
 export class AddComponent {
-  @Input() changeMode!: (type: string, form: Boolean) => void;
+  @Input() changeMode!: (type: string, form: boolean) => void;
 
   sucursal: Sucursal = new Sucursal();
   ubicaciones: UbicacionGeo[] = [];
@@ -30,6 +30,10 @@ export class AddComponent {
         this.ubicaciones = data;
       });
     console.log(this.ubicaciones);
+  }
+
+  Cancelar(){
+    this.changeMode('cancel', false);
   }
 
   onSubmit() {

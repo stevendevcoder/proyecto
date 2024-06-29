@@ -12,31 +12,36 @@ import { SharedModule } from '../../../shared/shared.module';
 })
 export class EditComponent {
   persona :Persona=new Persona();
+  nombre: String = '';
   
-  @Input() changeMode!: (type: string, form: Boolean) => void;
-  constructor(private service:PersonaService){}
+  @Input() changeMode!: (type: string, form: boolean) => void;
+  constructor(private service:PersonaService){
+    
+  }
 
   ngOnInit(){ 
     this.Editar();
     console.log("Se cambia a list"); 
-
   }
 
   Editar(){
     let id=Number(localStorage.getItem("id") || "");
-    alert("Actualizado con Exito...!!!" + id);
     this.service.getPersonaId(id).
       subscribe(data=>{
         this.persona=data;
       });
+    this.nombre = this.persona.nombre;
   }
 
-  Actualizar(persona:Persona){
-    console.log("Se cambia a list"); 
-    this.service.updatePersona(this.persona).subscribe(data=>{
-      this.persona=data;
-      alert("Actualizado con Exito...!!!" + this.persona.nombre);
+  Cancelar(){
+    this.changeMode('cancel', true);
+  }
 
+  Actualizar(){
+    this.service.updatePersona(this.persona).subscribe(data=>{
+      console.log("data: ",data);
+      this.persona=data;
+      console.log("Actualizado con Exito: " + this.persona.nombre);
     })
     this.changeMode('list', true);
   }
