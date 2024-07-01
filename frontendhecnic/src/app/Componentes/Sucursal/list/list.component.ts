@@ -30,6 +30,13 @@ export class ListComponent implements OnInit {
     });
   }
 
+  Editar(id: number): void {
+    
+    localStorage.setItem("id", id.toString());
+    console.log("LOL: ",localStorage.getItem("id"));
+    this.changeMode('edit', false);
+  }
+
   Delete(sucursal: Sucursal) {
     this.service.deleteSucursal(sucursal.id_sucursales).subscribe(() => {
       this.loadSucursales(); // Recargar la lista después de eliminar

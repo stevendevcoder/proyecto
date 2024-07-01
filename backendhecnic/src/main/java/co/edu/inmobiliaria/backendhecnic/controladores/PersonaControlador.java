@@ -42,7 +42,7 @@ public class PersonaControlador {
     }
         
     @PutMapping("/submit/{id_personas}")
-    public Persona  editar(@RequestBody Persona p, @PathVariable("id_personas") int id_personas){
+    public Persona editar(@RequestBody Persona p, @PathVariable("id_personas") int id_personas){
         p.setId_personas(id_personas);
         return service.edit(p);
     }
@@ -52,3 +52,4 @@ public class PersonaControlador {
         return service.delete(id_personas);
     }
 }
+

@@ -4,8 +4,6 @@
  */
 package co.edu.inmobiliaria.backendhecnic.controladores;
 
-import jakarta.persistence.*;
-
 import co.edu.inmobiliaria.backendhecnic.modelos.Inmueble;
 import co.edu.inmobiliaria.backendhecnic.servicios.InmuebleService;
 import org.springframework.beans.factory.annotation.Autowired;

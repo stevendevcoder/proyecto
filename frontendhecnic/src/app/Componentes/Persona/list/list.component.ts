@@ -13,6 +13,7 @@ import { PersonaService } from '../../../Service/persona.service';
 })
 export class ListComponent implements OnInit {
   personas: Persona[] = [];
+  @Input() filtro!: string;
   @Input() changeMode!: (type: string, form: boolean) => void;
 
   constructor(
@@ -29,7 +30,11 @@ export class ListComponent implements OnInit {
 
   loadPersonas() {
     this.service.getPersonas().subscribe(data => {
-      this.personas = data;
+      if(this.filtro == 'clientes'){
+        this.personas = data.filter((e) => e.tipoPersona.tipo == 'Cliente');
+      } else {
+        this.personas = data;
+      }
       this.cdr.detectChanges(); // Forzar la detección de cambios
     });
   }

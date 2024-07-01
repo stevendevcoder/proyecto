@@ -14,10 +14,10 @@ export class PersonaService {
   getPersonas(){
     return this.http.get<Persona[]>(this.Url);
   }
-
+  /*
   getTypePersona(idpersona: number): string{
     return this.http.get<string>(this.Url + "/" + idpersona);
-  } 
+  } */
 
   createPersona(persona: Persona){
     return this.http.post<Persona>(this.Url, persona);

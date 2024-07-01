@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { PersonaService } from '../../../Service/persona.service';
-import { Persona } from '../../../Modelo/Persona';
+import { Persona, Tipo, TipoPersona} from '../../../Modelo/Persona';
 import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
@@ -13,9 +12,13 @@ import { SharedModule } from '../../../shared/shared.module';
 })
 export class AddComponent {
   @Input() changeMode!: (type: string, form: boolean) => void;
-  persona = new Persona();
+  persona: Persona = new Persona();
+  tipos: string[] = Object.values(Tipo);
 
-  constructor(private service:PersonaService){}
+  constructor(
+    private service:PersonaService, 
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(){
   }
@@ -24,16 +27,15 @@ export class AddComponent {
     this.changeMode('cancel', true);
   }
 
-
   Guardar(){
-    console.log("Nombres: " + this.persona.nombre)
-    alert("Nombres: " + this.persona.nombre);
+    console.log("Persona add: ", this.persona);
     
     this.service.createPersona(this.persona)
-    .subscribe(data=>{
-      console.log("Se agrego la persona ", this.persona, " con exito");
-    })
+      .subscribe(data=>{
+        console.log("Se agrego la persona ", this.persona, " con exito");
+      });
 
+    this.cdr.detectChanges();
     this.changeMode('list', true);
   }
 }

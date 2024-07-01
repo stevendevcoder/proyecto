@@ -23,6 +23,11 @@ public class Persona {
     @Column
     private String email;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_tipopersona")
+    private TipoPersona tipoPersona;
+
+
     public int getId_personas() {
         return id_personas;
     }
@@ -53,6 +58,14 @@ public class Persona {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public TipoPersona getTipoPersona() {
+        return tipoPersona;
+    }
+
+    public void setTipoPersona(TipoPersona tipoPersona){
+        this.tipoPersona = tipoPersona;
     }
    
 }

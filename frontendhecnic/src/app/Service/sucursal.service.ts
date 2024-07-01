@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sucursal } from '../Modelo/Sucursal';
 
@@ -8,6 +8,13 @@ import { Sucursal } from '../Modelo/Sucursal';
 export class SucursalService {
 
   Url = 'http://localhost:8080/sucursales/submit';
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 

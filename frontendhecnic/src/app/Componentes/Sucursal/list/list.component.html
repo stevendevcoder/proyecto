@@ -6,9 +6,9 @@
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
+                        <th>UBICACION</th>
                         <th>DIRECCION</th>
                         <th>TELEFONO</th>
-                        <th>UBICACION</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -16,11 +16,11 @@
                     <tr *ngFor="let sucursal of sucursales" class="text-left">
                         <td>{{sucursal.id_sucursales}}</td>
                         <td>{{sucursal.nombreSucursal}}</td>
+                        <td><mat-icon>location_on</mat-icon>{{sucursal.ubicacion.ciudad}}</td>
                         <td>{{sucursal.direccion}}</td>
                         <td>{{sucursal.telefono}}</td>
-                        <td>{{sucursal.id_ubicacion}}</td>
                         <td>
-                            <button (click)="this.changeMode('edit', false)"  class="btn btn-warning">Editar</button>
+                            <button (click)="Editar(sucursal.id_sucursales)"  class="btn btn-warning">Editar</button>
                             <button (click)="Delete(sucursal)" class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
                         </td>
                     </tr>

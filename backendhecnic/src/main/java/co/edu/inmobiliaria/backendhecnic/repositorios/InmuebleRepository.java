@@ -14,6 +14,7 @@ public interface InmuebleRepository extends JpaRepository<Inmueble, Integer> {
     Inmueble findById(int id);
 
     // Método para guardar un inmueble
+    @SuppressWarnings("unchecked")
     Inmueble save(Inmueble inmueble);
 
     // Método para eliminar un inmueble por su id

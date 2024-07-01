@@ -5,7 +5,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Tipo Persona</th>
+                        <th>TIPO PERSONA</th>
                         <th>NOMBRES</th>
                         <th>EMAIL</th>
                         <th>TELEFONO</th>
@@ -16,7 +16,7 @@
 
                     <tr *ngFor="let persona of personas" class="text-left">
                         <td>{{persona.id_personas}}</td>
-                        <td>Cliente</td>
+                        <td>{{persona.tipoPersona.tipo.toString()}}</td>
                         <td>{{persona.nombre}}</td>
                         <td>{{persona.email}}</td>
                         <td>{{persona.telefono}}</td>
