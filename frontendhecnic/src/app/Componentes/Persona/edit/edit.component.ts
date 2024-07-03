@@ -40,9 +40,9 @@ export class EditComponent {
       console.log("Actualizado con Exito: " + this.persona.nombre);
     })
     this.cdr.detectChanges();
-    this.changeMode('list', true);
     localStorage.removeItem("id");
     console.log("LocalStorage cuando salgo de editar: ", localStorage);
+    this.changeMode('list', true);
   }
 
   Cancelar(){

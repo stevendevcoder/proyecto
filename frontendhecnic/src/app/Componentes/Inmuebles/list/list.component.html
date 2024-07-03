@@ -11,32 +11,36 @@
                         <th>ESTADO</th>
                         <th>CLIENTE</th><!--Nombre del cliente-->
                         <th>UBUCACION</th><!--Nombre de la ciudad-->
+                        <th>ESTRATO</th>
+                        <th>HABITACIONES</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let inmueble of inmubles" class="text-left">
-                        <td>{{inmueble.id_inmueble}}</td>
+                    <tr *ngFor="let inmueble of inmuebles" class="text-left">
+                        <td>{{inmueble.idInmueble}}</td>
                         <td>{{inmueble.descripcion}}</td>
                         <td>{{inmueble.precio}}</td>
                         <td>{{inmueble.tipo}}</td>
                         <td>{{inmueble.estado}}</td>
-                        <td>{{inmueble.id_cliente}}</td>
-                        <td>{{inmueble.id_ubicacion}}</td>
+                        <td>{{inmueble.cliente.nombre}}</td>
+                        <td>{{inmueble.ciudad.ciudad}}</td>
+                        <td>{{inmueble.estrato}}</td>
+                        <td>{{inmueble.habitaciones}}</td>
                         <td>
-                            <button (click)="changeMode('edit')" class="btn btn-warning">Editar</button>
-                            <button class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
+                            <button (click)="Edit(inmueble)" class="btn btn-warning">Editar</button>
+                            <button (click)="Delete(inmueble)" class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
                         </td>
                     </tr>
 
                 </tbody>
             </table>
             <h5
-                *ngIf="this.inmubles.length === 0"
+                *ngIf="this.inmuebles.length === 0"
                 class="textoalerta text-center font-weight-bold text-secondary">
                 Todavía no hay inmubles
             </h5>
         </div>
     </div>
-</div>s
+</div>

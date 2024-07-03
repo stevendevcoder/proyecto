@@ -5,7 +5,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>TIPO PERSONA</th>
+                        <th>TIPO</th>
                         <th>NOMBRES</th>
                         <th>EMAIL</th>
                         <th>TELEFONO</th>
@@ -29,9 +29,9 @@
                 </tbody>
             </table>
             <h5
-                *ngIf="this.personas.length === 0"
+                *ngIf="this.personas.length === 0 "
                 class="textoalerta text-center font-weight-bold text-secondary">
-                Todavía no hay personas
+                Todavía no hay {{filtro == 'clientes' ? 'clientes' : 'personas'}}
             </h5>
         </div>
     </div>

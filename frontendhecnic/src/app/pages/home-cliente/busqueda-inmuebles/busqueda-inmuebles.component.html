@@ -8,33 +8,39 @@
           </mat-form-field>
     </div>
     <div class="resultados">
-        <div class="inmueble-container">
-            <img src="../../../../assets/apartamento.jpg" alt="">
-            <div class="inmueble-info">
+        <div *ngFor="let inmueble of inmuebles" class="inmueble-container">
+            <img [src]="inmueble.imagen" alt="">
+            <div  class="inmueble-info">
                 <div class="extra-info">
-                    <div class="inmueble-estado disponible">Disponible</div>
+                    <div class="inmueble-estado" [ngClass]="getEstadoClase(inmueble)">
+                        {{(inmueble.estado == 'Vendido' || inmueble.estado == 'Arrendado') ? 'No disponible' : inmueble.estado}}
+                    </div>
                     <div class="inmueble-ubicacion">
                         <mat-icon>location_on</mat-icon>
-                        Bogota D.C
+                        {{inmueble.ciudad.ciudad}}, {{inmueble.ciudad.departamento}}
                     </div>
                 </div>
-                <p>Apartamento en Venta, CHAPINERO LA SALLE</p>
+                <p>{{inmueble.descripcion}}</p>
                 <div class="text-info">
                     <p>Precio</p>
-                    <span>$365.000.000</span>
+                    <span>${{inmueble.precio}}</span>
                 </div>
                 <div class="caracteristicas">
                     <div>
                         <p>Tipo</p>
-                        <span>Apartamento</span>
+                        <span>{{inmueble.tipo}}</span>
                     </div>
                     <div>
                         <p>Habitaciones</p>
-                        <span>3</span>
+                        <span>{{inmueble.habitaciones}}</span>
                     </div>
                     <div>
                         <p>Estrato</p>
-                        <span>4</span>
+                        <span>{{inmueble.estrato}}</span>
+                    </div>
+                    <div>
+                        <p>Negocio</p>
+                        <span>{{inmueble.negocio}}</span>
                     </div>
                 </div>
             </div>
@@ -70,68 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="inmueble-container">
-            <img src="../../../../assets/apartamento.jpg" alt="">
-            <div class="inmueble-info">
-                <div class="extra-info">
-                    <div class="inmueble-estado disponible">Disponible</div>
-                    <div class="inmueble-ubicacion">
-                        <mat-icon>location_on</mat-icon>
-                        Bogota D.C
-                    </div>
-                </div>
-                <p>Apartamento en Venta, CHAPINERO LA SALLE</p>
-                <div class="text-info">
-                    <p>Precio</p>
-                    <span>$365.000.000</span>
-                </div>
-                <div class="caracteristicas">
-                    <div>
-                        <p>Tipo</p>
-                        <span>Apartamento</span>
-                    </div>
-                    <div>
-                        <p>Habitaciones</p>
-                        <span>3</span>
-                    </div>
-                    <div>
-                        <p>Estrato</p>
-                        <span>4</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="inmueble-container">
-            <img src="../../../../assets/apartamento.jpg" alt="">
-            <div class="inmueble-info">
-                <div class="extra-info">
-                    <div class="inmueble-estado disponible">Disponible</div>
-                    <div class="inmueble-ubicacion">
-                        <mat-icon>location_on</mat-icon>
-                        Bogota D.C
-                    </div>
-                </div>
-                <p>Apartamento en Venta, CHAPINERO LA SALLE</p>
-                <div class="text-info">
-                    <p>Precio</p>
-                    <span>$365.000.000</span>
-                </div>
-                <div class="caracteristicas">
-                    <div>
-                        <p>Tipo</p>
-                        <span>Apartamento</span>
-                    </div>
-                    <div>
-                        <p>Habitaciones</p>
-                        <span>3</span>
-                    </div>
-                    <div>
-                        <p>Estrato</p>
-                        <span>4</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         
     </div>
 </div>

@@ -21,7 +21,7 @@
                     <label for="ubicacion">Ubicación Geográfica: </label>
                     <select class="form-control" [(ngModel)]="sucursal.ubicacion.id_ubicacion" name="idUbicacion" required>
                       <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">
-                        {{ubicacion.id_ubicacion}} - {{ ubicacion.ciudad }}
+                        {{ubicacion.id_ubicacion}} - {{ ubicacion.ciudad }}, {{ ubicacion.departamento }}
                       </option>
                     </select>
                   </div>

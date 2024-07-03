@@ -10,11 +10,7 @@ import { ListComponent } from '../../../Componentes/AnalisisRiesgo/list/list.com
   imports: [SharedModule, ListComponent]
 })
 export class AnalisisRiesgoComponent {
-  mode: string = 'list';
+  filtro: string = 'pendientes';
 
-  changeMode(type: string): void{
-    this.mode = type;
-  }
-  
 
 }

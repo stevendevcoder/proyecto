@@ -7,9 +7,6 @@
     background-color: #F3F3F3;
 }
 
-h3 {
-    font-size: 30px;
-}
 
 h3, p {
     margin: 0px;
@@ -123,6 +120,7 @@ ul li :hover{
     align-items: center;
     justify-content: space-between;
     padding: 20px 40px;
+    color: black;
 }
 
 
@@ -139,15 +137,14 @@ a {
     gap: 20px;
     overflow-y: auto;
     padding-block: 40px; /* To add some padding at the bottom */
+    padding-inline: 20px;
 }
-
-
 
 .dashboard-body section {
     min-width: 70%;
     height: fit-content;
-    border-radius: 25px;
-    border: 1px solid #570E28;
+    border-radius: 12px;
+    border: .5px solid #44444483;
     padding: 20px;
 }
 .dashboard-body section h2 {

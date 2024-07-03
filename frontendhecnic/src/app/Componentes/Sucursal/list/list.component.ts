@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   loadSucursales() {
     this.service.getSucursales().subscribe(data => {
       this.sucursales = data;
-      this.cdr.detectChanges(); // Forzar la detección de cambios
+      //this.cdr.detectChanges(); // Forzar la detección de cambios
     });
   }
 

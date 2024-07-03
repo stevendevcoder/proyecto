@@ -1,26 +1,36 @@
+import { Persona } from "./Persona";
+import { UbicacionGeo } from "./UbicacionGeo";
 
-export enum TipoInmueble {
+export class Inmueble {
+    idInmueble: number = 0;
+    descripcion: string = '';
+    precio: number = 0;
+    tipo: TipoInmueble = TipoInmueble.Apartamento;
+    estado: EstadoInmueble = EstadoInmueble.Revision;
+    negocio: TipoNegocio = TipoNegocio.Venta;
+    cliente: Persona = new Persona();
+    ciudad: UbicacionGeo = new UbicacionGeo;
+    habitaciones: number = 0;
+    estrato: number = 0;
+    direccion: string = '';
+    imagen: string = ''; 
+  
+  }
+  
+  export enum TipoInmueble {
     Casa = 'Casa',
     Apartamento = 'Apartamento',
     Oficina = 'Oficina'
-}
-export enum EstadoInmueble {
+  }
+  
+  export enum EstadoInmueble {
+    Revision = 'Revision',
     Disponible = 'Disponible',
     Vendido = 'Vendido',
     Arrendado = 'Arrendado'
-}
+  }
 
-export class Inmueble {
-    id_inmueble: number = 0;
-    descripcion: string = '';
-    precio: number = 0;
-    tipo: TipoInmueble = TipoInmueble.Casa;
-    estado: EstadoInmueble = EstadoInmueble.Arrendado;
-    imagenes: Blob[] = [];
-    habitaciones: number = 0;
-    estrato: number = 0;
-
-    //Foraneas
-    id_cliente: number = 0;
-    id_ubicacion: number = 0;
-}
+  export enum TipoNegocio {
+    Arriendo = 'Arriendo',
+    Venta = 'Venta'
+  }

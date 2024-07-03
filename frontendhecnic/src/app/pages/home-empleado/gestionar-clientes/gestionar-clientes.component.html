@@ -11,5 +11,8 @@
     <app-persona-list [changeMode]="this.changeMode" [filtro]="filtro" *ngIf="this.mode == 'list'">
 
     </app-persona-list>
+    <app-persona-edit [changeMode]="this.changeMode" *ngIf="this.mode == 'edit'">
+
+    </app-persona-edit>
     
 </section>

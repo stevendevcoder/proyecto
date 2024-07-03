@@ -1,14 +1,28 @@
 <section>
     <h2 class="text-center">Estudios de Riesgo</h2>
     <div class="d-flex p-3 justify-content-left gap-2">
-        <button (click)="changeMode('list')" class="btn btn-primary p-2">
+        <button (click)="this.filtro = 'pendientes'" class="btn btn-primary p-2" [ngClass]="{'btn-dark': this.filtro == 'pendientes' }">
           <mat-icon>list</mat-icon>
-          Ver todos los estudios
+          Ver estudios pendientes
+        </button>
+        <button (click)="this.filtro = 'aceptados'" class="btn btn-primary p-2" [ngClass]="{'btn-dark': this.filtro == 'aceptados'}">
+          <mat-icon>list</mat-icon>
+          Ver estudios aceptados
+        </button>
+        <button (click)="this.filtro = 'rechazados'" class="btn btn-primary p-2" [ngClass]="{'btn-dark': this.filtro == 'rechazados'}">
+          <mat-icon>list</mat-icon>
+          Ver todos los rechazados
         </button>
         
     </div>
     <!--Sucursales Listar-->
-    <app-list [changeMode]="this.changeMode" *ngIf="this.mode == 'list'">
+    <app-list [filtro]="this.filtro" *ngIf="this.filtro == 'pendientes'">
+
+    </app-list>
+    <app-list [filtro]="this.filtro" *ngIf="this.filtro == 'aceptados'">
+
+    </app-list>
+    <app-list [filtro]="this.filtro" *ngIf="this.filtro == 'rechazados'">
 
     </app-list>
 </section>

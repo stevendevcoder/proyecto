@@ -1,1 +1,228 @@
-<p>edit works!</p>
+
+<div class="container">
+    <h3>Editar Inmueble</h3>
+    <form (ngSubmit)="onSubmit()">
+      <!--Columna 1-->
+      <div class="form-body">
+        <div class="column">
+          <div class="form-group">
+            <label for="propietario">Nombre propietario</label>
+            <select class="form-control" id="propietario" [(ngModel)]="inmueble.cliente.id_personas" name="propietario" required>
+              <option value="" disabled>Seleccionar propietario</option>
+              <option *ngFor="let propietario of propietarios" [value]="propietario.id_personas">
+                {{propietario.id_personas}} - {{propietario.nombre}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="descripcion">Descripción propiedad</label>
+            <textarea id="descripcion" [(ngModel)]="inmueble.descripcion" name="descripcion" placeholder="Type here"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <select class="form-control" id="ciudad" [(ngModel)]="inmueble.ciudad.id_ubicacion" name="ciudad" required>
+              <option value="null" disabled>Seleccionar ciudad</option>
+              <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">
+                {{ubicacion.id_ubicacion}} - {{ ubicacion.ciudad }}, {{ ubicacion.departamento }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" [(ngModel)]="inmueble.direccion" name="direccion" placeholder="Moqups">
+          </div>
+  
+          
+          
+        </div>
+  
+        <!--Línea divisoria-->
+        <div class="divider"></div>
+  
+        <!--Columna 2-->
+        <div class="column">
+            <div class="form-group">
+                <label>Tipo de registro</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="registro" [(ngModel)]="inmueble.negocio"  value="Venta" checked> Venta</label>
+                  <label><input type="radio" name="registro" [(ngModel)]="inmueble.negocio" value="Arriendo"> Arriendo</label>
+                </div>
+              </div>
+      
+              <div class="form-group">
+                <label>Tipo de Inmueble</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Casa" checked> Casa</label>
+                  <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Apartamento"> Apartamento</label>
+                  <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Oficina"> Oficina</label>
+                </div>
+              </div>
+            <div class="form-row detalles">
+                <div class="form-group">
+                  <label for="estrato">Estrato</label>
+                  <div class="number-input">
+                    <input type="number" id="estrato" [(ngModel)]="inmueble.estrato" name="estrato" min="1" max="6">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="habitaciones">Habitaciones</label>
+                  <div class="number-input">
+                    <input type="number" id="habitaciones" [(ngModel)]="inmueble.habitaciones" name="habitaciones" min="1">
+                  </div>
+                </div>
+              </div>
+          <div class="form-group">
+            <label>Subir imagen de la propiedad</label>
+            <div class="image-upload">
+              <input #fileInput type="file" (change)="onFileChange($event)" accept="image/*">
+              <div class="preview" *ngIf="imagePreview">
+                <img [src]="imagePreview" alt="Vista previa de la imagen">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-buttons">
+        <button type="submit" class="submit-btn enviar">
+          Guardar inmueble
+        </button>
+        <button (click)="Cancelar()" class="submit-btn cancelar">
+          Cancelar
+        </button>
+      </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="this.modeAvaluos == 'edit'">
+    <h3>Editar Avaluo - {{this.avaluoEdit.id_avaluo}}</h3>
+
+    <form (ngSubmit)="onEditAvaluo()">
+        <div class="form-body">
+            <div class="column">
+                <div class="form-row">
+                    <div class="form-group">
+                      <label for="valor">Valor avalúo ($COP)</label>
+                      <input type="text" id="valor" [(ngModel)]="avaluoEdit.valorAvaluo" [value]="avaluoEdit.valorAvaluo" name="valor" placeholder="$">
+                    </div>
+                    <div class="form-group">
+                      <label for="fecha">Fecha de avalúo</label>
+                      <input type="date" id="fecha" [(ngModel)]="avaluoEdit.fechaAvaluo" [value]="avaluoEdit.fechaAvaluo" name="fecha">
+                    </div>
+                  </div>
+          
+                  <div class="form-group">
+                    <label for="descripcion-avaluo">Descripción avalúo</label>
+                    <textarea id="descripcion-avaluo" [(ngModel)]="avaluoEdit.descripcion" [value]="avaluoEdit.descripcion" name="descripcionAvaluo" placeholder="Type here"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="empleado">Empleado que realizó el avaluo</label>
+                    <select class="form-control" id="empleado" [(ngModel)]="avaluoEdit.empleado.id_personas" name="empleado" required>
+                        <option value="" disabled></option>
+                        <option *ngFor="let empleado of empleados" [value]="empleado.id_personas">
+                          {{empleado.id_personas}} - {{empleado.nombre}}
+                        </option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn enviar">
+              Editar avaluo
+            </button>
+            <button (click)="this.modeAvaluos = 'list'" class="submit-btn cancelar">
+              Cancelar
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="this.modeAvaluos == 'add'">
+    <h3>Agregar nuevo avaluo</h3>
+
+    <form (ngSubmit)="onSubmitAvaluo()">
+        <div class="form-body">
+            <div class="column">
+                <div class="form-group">
+                    <label for="valor">Valor avalúo ($COP)</label>
+                    <input type="text" id="valor" [(ngModel)]="avaluoNew.valorAvaluo" name="valor" placeholder="$" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de avalúo</label>
+                    <input type="date" id="fecha" [(ngModel)]="avaluoNew.fechaAvaluo" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion-avaluo">Descripción avalúo</label>
+                    <textarea id="descripcion-avaluo" [(ngModel)]="avaluoNew.descripcion" name="descripcionAvaluo" placeholder="Type here" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="empleado">Empleado que realizó el avaluo</label>
+
+                    <select class="form-control" id="empleado" [(ngModel)]="avaluoNew.empleado.id_personas" name="empleado" required>
+                        <option *ngFor="let empleado of empleados" [value]="empleado.id_personas">
+                          {{empleado.id_personas}} - {{empleado.nombre}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="submit-btn enviar">
+              Agregar avaluo
+            </button>
+            <button (click)="this.modeAvaluos = 'list'" class="submit-btn cancelar">
+              Cancelar
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="this.modeAvaluos == 'list'">
+    <h3>Historial de Avaluos</h3>
+    <div class="d-flex p-3 justify-content-left gap-2">
+        <button (click)="this.modeAvaluos = 'add'" class="btn btn-primary p-2">
+          <mat-icon>add</mat-icon>
+          Agregar avaluo nuevo
+        </button>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DESCRIPCION</th>
+                        <th>VALOR</th>
+                        <th>FECHA</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let _avaluo of avaluosInmueble" class="text-left">
+                        <td>{{_avaluo.id_avaluo}}</td>
+                        <td>{{_avaluo.descripcion}}</td>
+                        <td>{{_avaluo.valorAvaluo}}</td>
+                        <td>{{_avaluo.fechaAvaluo.getDay()}}/{{_avaluo.fechaAvaluo.getMonth()}}/{{_avaluo.fechaAvaluo.getFullYear()}}</td>
+        
+                        <td>
+                            <button (click)="EditAvaluo(_avaluo)" class="btn btn-warning" style="margin-left: 1px;">Editar</button>
+                            <button (click)="DeleteAvaluo(_avaluo)" class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <h5
+                *ngIf="this.avaluosInmueble.length === 0"
+                class="textoalerta text-center font-weight-bold text-secondary">
+                Todavía no hay avaluos para este inmueble
+            </h5>
+        </div>
+    </div>
+</div>

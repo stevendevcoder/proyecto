@@ -1,51 +1,123 @@
-<div class="container col-md-6 d-flex">
-    <div class="card">
-        <div class="card-header">
-            <h3>Registrar Inmueble</h3>
-        </div>
-        <div class="card-body">
-            <form action="d-flex ">
-                <div class="section-1">
-                    <div class="form-group">
-                        <label for="">Nombre propietario: </label>
-                        <input type="text" class="form-control" name="nombres">
-                    </div>
-                    <div class="form-group">
-                        <label for="">: </label>
-                        <input type="text" class="form-control"  name="telefono">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Email: </label>
-                        <input type="email" class="form-control"  name="email">
-                    </div>
-                </div>
-                <div class="section-2">
-                    <div class="form-group">
-                        <label for="">Nombres: </label>
-                        <input type="text" class="form-control" name="nombres">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Telefono: </label>
-                        <input type="text" class="form-control"  name="telefono">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Email: </label>
-                        <input type="email" class="form-control"  name="email">
-                    </div>
-                </div>
-                
+<div class="container">
+    <h3>Registrar inmueble</h3>
+    <form (ngSubmit)="onSubmit()" #addInmuebleForm="ngForm">
+      <!--Columna 1-->
+      <div class="form-body">
+        <div class="column">
+          <div class="form-group">
+            <label for="propietario">Nombre propietario</label>
+            <select class="form-control" id="propietario" [(ngModel)]="inmueble.cliente.id_personas" name="propietario" required>
+              <option value="" disabled>Seleccionar propietario</option>
+              <option *ngFor="let propietario of propietarios" [value]="propietario.id_personas">
+                {{propietario.id_personas}} - {{propietario.nombre}}
+              </option>
+            </select>
+          </div>
 
-                <button (click)="this.changeMode('list')" class="btn btn-danger">Guardar</button>
-            </form>
+          <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <select class="form-control" id="ciudad" [(ngModel)]="inmueble.ciudad.id_ubicacion" name="ciudad" required>
+              <option value="null" disabled>Seleccionar ciudad</option>
+              <option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id_ubicacion">
+                {{ubicacion.id_ubicacion}} - {{ ubicacion.ciudad }}, {{ ubicacion.departamento }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" [(ngModel)]="inmueble.direccion" name="direccion" placeholder="Moqups" required>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción propiedad</label>
+            <textarea id="descripcion" [(ngModel)]="inmueble.descripcion" name="descripcion" placeholder="Type here" required></textarea>
+          </div>
+  
+          <div class="form-group">
+            <label>Tipo de registro</label>
+            <div class="radio-group">
+              <label><input type="radio" name="registro"  value="venta" checked> Venta</label>
+              <label><input type="radio" name="registro"  value="arriendo"> Arriendo</label>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label>Tipo de Inmueble</label>
+            <div class="radio-group">
+              <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Casa" checked> Casa</label>
+              <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Apartamento"> Apartamento</label>
+              <label><input type="radio" name="tipoInmueble" [(ngModel)]="inmueble.tipo" value="Oficina"> Oficina</label>
+            </div>
+          </div>
+  
+          <div class="form-row detalles">
+            <div class="form-group">
+              <label for="estrato">Estrato</label>
+              <div class="number-input">
+                <input type="number" id="estrato" [(ngModel)]="inmueble.estrato" name="estrato" min="1" max="6" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="habitaciones">Habitaciones</label>
+              <div class="number-input">
+                <input type="number" id="habitaciones" [(ngModel)]="inmueble.habitaciones" name="habitaciones" min="1" required>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <h3>Agregar inmueble</h3>
+  
+        <!--Línea divisoria-->
+        <div class="divider"></div>
+  
+        <!--Columna 2-->
+        <div class="column">
+  
+          <div class="form-group">
+            <label for="empleado">Empleado que realiza el avaluo</label>
+            <select class="form-control" id="empleado" [(ngModel)]="avaluo.empleado.id_personas" name="empleado" required>
+                <option *ngFor="let empleado of empleados" [value]="empleado.id_personas">
+                  {{empleado.id_personas}} - {{empleado.nombre}}
+                </option>
+            </select>
+          </div>
+  
+          <div class="form-row">
+            <div class="form-group">
+              <label for="valor">Valor avalúo ($COP)</label>
+              <input type="text" id="valor" [(ngModel)]="avaluo.valorAvaluo" name="valor" placeholder="$" required>
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha de avalúo</label>
+              <input type="date" id="fecha" [(ngModel)]="avaluo.fechaAvaluo" name="fecha" required>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="descripcion-avaluo">Descripción avalúo</label>
+            <textarea id="descripcion-avaluo" [(ngModel)]="avaluo.descripcion" name="descripcionAvaluo" placeholder="Type here" required></textarea>
+          </div>
+
+          
+  
+          <div class="form-group">
+            <label>Subir imagen de la propiedad</label>
+            <div class="image-upload">
+              <input #fileInput type="file" (change)="onFileChange($event)" accept="image/*">
+              <div class="preview" *ngIf="imagePreview">
+                <img [src]="imagePreview" alt="Vista previa de la imagen">
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-            
-        </div>
-    </div>
-    
-</div>
+      </div>
+      
+      <div class="form-buttons">
+        <button type="submit" [disabled]="addInmuebleForm.invalid" class="submit-btn enviar">
+          Enviar registro
+        </button>
+        <button (click)="Cancelar()" class="submit-btn cancelar">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>

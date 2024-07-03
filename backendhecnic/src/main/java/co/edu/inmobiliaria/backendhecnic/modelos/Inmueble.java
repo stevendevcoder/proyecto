@@ -4,45 +4,72 @@
  */
 package co.edu.inmobiliaria.backendhecnic.modelos;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "inmuebles")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Inmueble {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_inmueble")
-    private int idInmueble;
+    private Long idInmueble;
 
-    @Column(name = "descripcion")
+    @Column(columnDefinition = "TEXT")
     private String descripcion;
 
-    @Column(name = "precio")
-    private double precio;
+    private BigDecimal precio;
 
-    @Column(name = "tipo")
-    private String tipo;
+    @Enumerated(EnumType.STRING)
+    private TipoInmueble negocio;
 
-    @Column(name = "estado")
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    private TipoInmueble tipo;
 
-    @Column(name = "id_cliente")
-    private int idCliente;
+    @Enumerated(EnumType.STRING)
+    private EstadoInmueble estado;
 
-    @Column(name = "id_ubicacion")
-    private int idCiudad;
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Persona cliente;
 
-    @Column(name = "imagenes")
-    private String imagenes;
+    @ManyToOne
+    @JoinColumn(name = "id_ciudad")
+    private UbicacionGeo ciudad;
 
-    // Constructor, getters y setters
+    private Integer habitaciones;
 
-    public int getIdInmueble() {
+    private Integer estrato;
+
+    private String direccion;
+
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
+    private String imagen;
+    
+    // Getters y setters
+    
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public Long getIdInmueble() {
         return idInmueble;
     }
 
-    public void setIdInmueble(int idInmueble) {
+    public void setIdInmueble(Long idInmueble) {
         this.idInmueble = idInmueble;
     }
 
@@ -54,51 +81,86 @@ public class Inmueble {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
-    public String getTipo() {
+    public TipoInmueble getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(TipoInmueble tipo) {
         this.tipo = tipo;
     }
 
-    public String getEstado() {
+    public EstadoInmueble getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoInmueble estado) {
         this.estado = estado;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public Persona getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Persona cliente) {
+        this.cliente = cliente;
     }
 
-    public int getIdCiudad() {
-        return idCiudad;
+    public UbicacionGeo getCiudad() {
+        return ciudad;
     }
 
-    public void setIdCiudad(int idCiudad) {
-        this.idCiudad = idCiudad;
+    public void setCiudad(UbicacionGeo ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public String getImagenes() {
-        return imagenes;
+    public Integer getHabitaciones() {
+        return habitaciones;
     }
 
-    public void setImagenes(String imagenes) {
-        this.imagenes = imagenes;
+    public void setHabitaciones(Integer habitaciones) {
+        this.habitaciones = habitaciones;
+    }
+
+    public Integer getEstrato() {
+        return estrato;
+    }
+
+    public void setEstrato(Integer estrato) {
+        this.estrato = estrato;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public TipoInmueble getNegocio() {
+        return negocio;
+    }
+    public void setNegocio(TipoInmueble negocio) {
+        this.negocio = negocio;
+    }
+
+    public enum TipoInmueble {
+        Casa, Apartamento, Oficina
+    }
+
+    public enum EstadoInmueble {
+        Revision, Disponible, Vendido, Arrendado
+    }
+
+    public enum TipoNegocio {
+        Arriendo, Venta
     }
 }

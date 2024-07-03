@@ -91,6 +91,9 @@ h2 {
 .no_disponible {
     background-color: #9c0a05a2;
 }
+.pendiente {
+    background-color: goldenrod;
+}
 
 /* Título */
 .inmueble-info p {

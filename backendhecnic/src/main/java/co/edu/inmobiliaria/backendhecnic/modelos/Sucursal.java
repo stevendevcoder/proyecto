@@ -27,7 +27,6 @@ public class Sucursal {
 
     // Getters and Setters
 
-
     public int getId_sucursales() {
         return id_sucursales;
     }

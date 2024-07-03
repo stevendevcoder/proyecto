@@ -20,13 +20,13 @@ export class ListComponent implements OnInit {
     private service: PersonaService,
     private cdr: ChangeDetectorRef
   ) {
-    this.loadPersonas();
   }
 
   ngOnInit(): void {
     this.loadPersonas();
     console.log("Actualizamos lista");
   }
+
 
   loadPersonas() {
     this.service.getPersonas().subscribe(data => {
@@ -35,8 +35,8 @@ export class ListComponent implements OnInit {
       } else {
         this.personas = data;
       }
-      this.cdr.detectChanges(); // Forzar la detección de cambios
     });
+    this.cdr.detectChanges(); // Forzar la detección de cambios
   }
 
   Editar(persona: Persona): void {
