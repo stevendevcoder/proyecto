@@ -30,7 +30,7 @@ public class Inmueble {
     private BigDecimal precio;
 
     @Enumerated(EnumType.STRING)
-    private TipoInmueble negocio;
+    private TipoNegocio negocio;
 
     @Enumerated(EnumType.STRING)
     private TipoInmueble tipo;
@@ -145,10 +145,10 @@ public class Inmueble {
         this.imagen = imagen;
     }
 
-    public TipoInmueble getNegocio() {
+    public TipoNegocio getNegocio() {
         return negocio;
     }
-    public void setNegocio(TipoInmueble negocio) {
+    public void setNegocio(TipoNegocio negocio) {
         this.negocio = negocio;
     }
 

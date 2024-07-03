@@ -49,6 +49,7 @@ public class PersonaControlador {
     
     @DeleteMapping("/submit/{id_personas}")
     public Persona delete(@PathVariable("id_personas") int id_personas){
+
         return service.delete(id_personas);
     }
 }

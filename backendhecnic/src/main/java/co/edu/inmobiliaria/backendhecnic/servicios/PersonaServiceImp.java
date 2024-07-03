@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.inmobiliaria.backendhecnic.servicios;
+import co.edu.inmobiliaria.backendhecnic.repositorios.InmuebleRepository;
 import co.edu.inmobiliaria.backendhecnic.repositorios.PersonaRepository;
 import co.edu.inmobiliaria.backendhecnic.repositorios.TipoPersonaRepository;
 import jakarta.transaction.Transactional;
@@ -25,6 +26,9 @@ public class PersonaServiceImp implements PersonaService{
 
     @Autowired
     private TipoPersonaRepository tipoPersonaRepository;
+
+    @Autowired
+    private InmuebleRepository inmuebleRepository;
     
     @Override
     public List<Persona> listar() {
@@ -68,6 +72,15 @@ public class PersonaServiceImp implements PersonaService{
             }
         }
         return p;
+    }
+
+    @Transactional
+    public void eliminarPersonaConInmuebles(int idPersona) {
+        // Eliminar los inmuebles asociados
+        inmuebleRepository.deleteByClienteId(idPersona);
+
+        // Ahora eliminar la persona
+        repositorio.deleteById(idPersona);
     }
     
 }
