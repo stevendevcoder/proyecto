@@ -47,7 +47,6 @@ h2 {
 
 .resultados .inmueble-container:hover { 
     box-shadow: 0 8px 26px rgba(0, 0, 0, 0.514);
-    cursor: pointer;
     transition: box-shadow .2s;
 }
 
@@ -158,5 +157,27 @@ h2 {
 
 .contactar:hover {
     background-color: #e65c00;
+}
+
+.agendar-cita {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    padding-block: 8px;
+    border-radius: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    border: 1px solid #777;
+    transition: .2s all;
+
+}
+
+.agendar-cita:hover {
+    background-color: black;
+    color: #fff;
+    transition: .2s all;
 }
 

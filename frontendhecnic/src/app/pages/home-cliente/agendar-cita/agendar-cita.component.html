@@ -1,58 +1,34 @@
+<h3 *ngIf="this.submited">Cita enviada!</h3>
 <div class="contact-form">
-    <h2>Contactar</h2>
+    <h2 class="text-center">Contactar</h2>
     <form>
         <div class="form-group">
-            <label for="nombre">Nombre y apellido
-                
-            </label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" disabled>
+            <label for="fecha">Fecha de avalúo</label>
+            <input type="date" id="fecha" [(ngModel)]="cita.fecha" name="fecha" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Correo electronico: </label>
+            <input type="email" id="email" name="email" [(ngModel)]="cita.correo" value="contact@moqups.com">
         </div>
         <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" value="contact@moqups.com" disabled>
-        </div>
-        <div class="form-group">
-            <label for="telefono">Numero de telefono</label>
-            <input type="text" id="telefono" name="telefono" value="Product Manager" disabled>
+            <label for="telefono">Numero de telefono: </label>
+            <input type="text" id="telefono" name="telefono" [(ngModel)]="cita.telefono" value="Product Manager">
         </div>
         <div class="form-group">
             <label>Razon de consulta</label>
             <div class="radio-group">
-                <label><input type="radio" name="razon" value="arrendar" checked> Arrendar mi propiedad</label>
-                <label><input type="radio" name="razon" value="vender"> Vender mi propiedad</label>
-                <label><input type="radio" name="razon" value="comprar"> Comprar propiedad</label>
-                <label><input type="radio" name="razon" value="comprar"> Arrendar propiedad</label>
+                <label><input type="radio" name="razon" [(ngModel)]="cita.motivo" value="ArrendarPropietario" checked> Arrendar mi propiedad</label>
+                <label><input type="radio" name="razon" [(ngModel)]="cita.motivo" value="Vender"> Vender mi propiedad</label>
+                <label><input type="radio" name="razon" [(ngModel)]="cita.motivo" value="Comprar"> Comprar propiedad</label>
+                <label><input type="radio" name="razon" [(ngModel)]="cita.motivo" value="Arrendar"> Arrendar propiedad</label>
             </div>
         </div>
 
-        <div class="d-flex justify-content-between">
-            <div class="form-group">
-                <label for="ciudad">Ciudad</label>
-                <select id="ciudad" name="ciudad">
-                    <option value="">Seleccionar ciudad</option>
-                    <!-- Add more options here -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="estrato">Estrato</label>
-                <select id="estrato" type="number" name="estrato">
-                    <option value="">Seleccionar Estrato</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="habitaciones">Habitaciones</label>
-                <input type="number" id="habitaciones" name="habitaciones" value="3">
-            </div>
-        </div>
         
         <div class="form-group">
-            <button type="submit" class="submit-btn">Consulta</button>
+            <button (click)="Guardar()" type="submit" class="submit-btn">Consulta</button>
         </div>
     </form>
 </div>
+

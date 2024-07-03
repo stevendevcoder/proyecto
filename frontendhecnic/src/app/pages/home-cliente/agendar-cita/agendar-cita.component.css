@@ -21,6 +21,11 @@ label {
 
 .contact-form h2 {
     margin-bottom: 20px;
+
+}
+
+h2 {
+    color: black;
 }
 
 .form-group {
@@ -32,9 +37,13 @@ label {
     margin-bottom: 5px;
 }
 
+
+
+
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="number"],
+.form-group input[type="date"],
 .form-group select {
     width: calc(100% - 22px);
     padding: 8px;

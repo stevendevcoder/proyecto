@@ -60,7 +60,6 @@ export class AddComponent {
     });
   }
 
-
   onFileChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
@@ -95,6 +94,9 @@ export class AddComponent {
           );
           this.inmueble.idInmueble = response.idInmueble;
           let newEstudio = new EstudioRiesgo(this.inmueble, this.avaluo.fechaAvaluo);
+          if (newEstudio.estado === undefined || newEstudio.estado === null) {
+            console.error("Estado es nulo o indefinido");
+          }
           this.estudioRiesgoService.createEstudio(newEstudio).subscribe(
             response => {
               console.log('Estudio de riesgo generado correctamente:', response);

@@ -1,37 +1,31 @@
 import { Inmueble } from "./Inmueble";
 
 export enum Resultado {
-    positivo = 'Positivo',
-    negativo = 'Negativo'
+    Positivo = 'Positivo',
+    Negativo = 'Negativo'
 }
 
 export enum EstadoEstudio {
-    pendiente = 'Pendiente',
-    aceptado = 'Aceptado',
-    rechazado = 'Rechazado'
+    Pendiente = 'Pendiente',
+    Aceptado = 'Aceptado',
+    Rechazado = 'Rechazado'
 }
 
 export class EstudioRiesgo {    
     id_estudio: number = 0;
     inmueble: Inmueble = new Inmueble();
-    estado: EstadoEstudio = EstadoEstudio.pendiente;
+    estado: string = 'Pendiente';
     fechaEstudio: Date = new Date();
-    resultadoListaClinton: Resultado = Resultado.negativo;
-    resultadoCentral: Resultado = Resultado.negativo;
-    certificadoLibertad: Resultado = Resultado.negativo;
+    resultadoListaClinton: Resultado = Resultado.Negativo;
+    resultadoCentral: Resultado = Resultado.Negativo;
+    certificadoLibertad: Resultado = Resultado.Negativo;
 
     constructor(inmueble: Inmueble = new Inmueble(), fecha: Date){
         this.inmueble = inmueble;
-        this.estado = EstadoEstudio.pendiente
+        this.estado = 'Pendiente';
         this.fechaEstudio = fecha;
-        this.resultadoListaClinton = this.r() ? Resultado.negativo : Resultado.positivo;
-        this.resultadoCentral = this.r() ? Resultado.positivo : Resultado.negativo;
-        this.certificadoLibertad = this.r() ? Resultado.negativo : Resultado.positivo;
+        this.resultadoListaClinton = Math.random() < 0.5 ? Resultado.Negativo : Resultado.Positivo;
+        this.resultadoCentral = Math.random() < 0.5 ? Resultado.Positivo : Resultado.Negativo;
+        this.certificadoLibertad = Math.random() < 0.5 ? Resultado.Negativo : Resultado.Positivo;
     }
-
-    r = (): boolean => {
-        return Math.random() < 0.5;
-    }
-
-    
 }

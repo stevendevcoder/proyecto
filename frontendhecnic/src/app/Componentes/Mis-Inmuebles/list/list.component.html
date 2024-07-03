@@ -1,5 +1,12 @@
 <div class="container">
     <div class="card">
+        <label for="propietario">Cliente: </label>
+        <select class="form-control" id="propietario" [(ngModel)]="cliente.id_personas" name="propietario" required>
+            <option value="" disabled>Seleccionar cliente</option>
+            <option *ngFor="let n of clientes" [value]="cliente.id_personas">
+                {{n.id_personas}} - {{n.nombre}}
+            </option>
+        </select>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
@@ -17,15 +24,15 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let inmueble of inmubles" class="text-left">
-                        <td>{{inmueble.id_inmueble}}</td>
+                    <tr *ngFor="let inmueble of inmuebles" class="text-left">
+                        <td>{{inmueble.idInmueble}}</td>
                         <td>{{inmueble.descripcion}}</td>
                         <td>{{inmueble.precio}}</td>
                         <td>{{inmueble.tipo}}</td>
                         <td>{{inmueble.estado}}</td>
                         <td>{{inmueble.habitaciones}}</td>
                         <td>{{inmueble.estrato}}</td>
-                        <td>{{inmueble.id_ubicacion}}</td>
+                        <td>{{inmueble.ciudad.ciudad}}</td>
                         <td>
                             <button (click)="changeMode('edit')" class="btn btn-warning">Editar</button>
                             <button class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
@@ -35,7 +42,7 @@
                 </tbody>
             </table>
             <h5
-                *ngIf="this.inmubles.length === 0"
+                *ngIf="this.inmuebles.length === 0"
                 class="textoalerta text-center font-weight-bold text-secondary">
                 Todavía no hay inmubles
             </h5>

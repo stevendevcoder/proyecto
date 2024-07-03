@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { EstadoInmueble, Inmueble } from '../../../Modelo/Inmueble';
 import { InmuebleService } from '../../../Service/inmueble.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-busqueda-inmuebles',
@@ -14,20 +15,25 @@ import { InmuebleService } from '../../../Service/inmueble.service';
 })
 export class BusquedaInmueblesComponent {
   inmuebles: Inmueble[] = [];
+  filtro: string = '';
 
   constructor(
-    private inmuebleService: InmuebleService
+    private inmuebleService: InmuebleService,
+    private router: Router
   ){
-
   }
 
   ngOnInit(){
     this.loadInmuebles();
   }
   
-  loadInmuebles(){
+  loadInmuebles(busqueda: string = ''){
     this.inmuebleService.getInmuebles().subscribe(data => {
-      this.inmuebles = data;
+      if(busqueda != ''){
+        this.inmuebles = data.filter(i => i.descripcion.toLowerCase().includes(busqueda.toLowerCase()));
+      } else {
+        this.inmuebles = data;
+      }
     });
   }
   getEstadoClase(i: Inmueble): string {
@@ -43,5 +49,13 @@ export class BusquedaInmueblesComponent {
       default:
         return '';
     }
+  }
+
+  buscar(){
+    this.loadInmuebles(this.filtro);
+  }
+
+  toCita() {
+    this.router.navigate(['cliente/agendar-cita']);
   }
 }

@@ -16,6 +16,9 @@ section h2 {
     color: black;
     font-weight: 400;
 }
+label {
+    color: black;
+}
 
 .search input {
     max-width: 120px;

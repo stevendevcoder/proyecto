@@ -1,14 +1,65 @@
 
 <section>
-    <h2 class="text-center">Gestionar mis inmuebles</h2>
-    <div class="d-flex p-3 justify-content-left gap-2">
-        <button (click)="changeMode('list')" class="btn btn-primary p-2">
+    <h2 class="text-center">Gestionar inmuebles</h2>
+    <div class=" p-3 justify-content-left gap-2">
+      <form action="">
+
+        <label for="propietario mb-2">Cliente: </label>
+        <select class="form-control" id="propietario" [(ngModel)]="cliente.id_personas" class="mb-2" name="propietario" required>
+            <option value="" disabled>Seleccionar cliente</option>
+            <option *ngFor="let n of clientes" [value]="n.id_personas">
+                  {{n.id_personas}} - {{n.nombre}}
+            </option>
+        </select>
+        <button (click)="this.loadInmuebles()" class="btn btn-primary p-2">
           <mat-icon>list</mat-icon>
           Ver todos mis inmuebles
         </button>
+      </form>
         
     </div>
-    <app-list [changeMode]="this.changeMode" *ngIf="this.mode == 'list'">
-
-    </app-list>
+    <div class="container">
+      <div class="card">
+          
+          <div class="card-body">
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>ID</th>
+                          <th>DESCRIPCION</th>
+                          <th>PRECIO</th>
+                          <th>TIPO</th>
+                          <th>ESTADO</th>
+                          <th>HABITACIONES</th>
+                          <th>ESTRATO</th>
+                          <th>UBICACION</th>
+                          <th>ACCIONES</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+  
+                      <tr *ngFor="let inmueble of inmuebles" class="text-left">
+                          <td>{{inmueble.idInmueble}}</td>
+                          <td>{{inmueble.descripcion}}</td>
+                          <td>{{inmueble.precio}}</td>
+                          <td>{{inmueble.tipo}}</td>
+                          <td>{{inmueble.estado}}</td>
+                          <td>{{inmueble.habitaciones}}</td>
+                          <td>{{inmueble.estrato}}</td>
+                          <td>{{inmueble.ciudad.ciudad}}</td>
+                          <td>
+                              <button (click)="Delete(inmueble)" class="btn btn-danger" style="margin-left: 1px;">Borrar</button>
+                          </td>
+                      </tr>
+  
+                  </tbody>
+              </table>
+              <h5
+                  *ngIf="this.inmuebles.length === 0"
+                  class="textoalerta text-center font-weight-bold text-secondary">
+                  Todavía no hay inmubles
+              </h5>
+          </div>
+      </div>
+  </div>s
 </section>

@@ -3,9 +3,10 @@
         <h2>Busqueda de inmuebles</h2>
         <mat-form-field appearance="outline">
             <mat-label>Termino de búsqueda</mat-label>
-            <input matInput type="text" placeholder="Termino de búsqueda">
+            <input matInput onchange="buscar()" [(ngModel)]="this.filtro" type="text" placeholder="Termino de búsqueda">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
+        <button (click)="buscar()" class="btn btn-dark m-3 p-3">Buscar</button>
     </div>
     <div class="resultados">
         <div *ngFor="let inmueble of inmuebles" class="inmueble-container">
@@ -43,6 +44,10 @@
                         <span>{{inmueble.negocio}}</span>
                     </div>
                 </div>
+                <button (click)="toCita()" class="agendar-cita">
+                    <mat-icon>email</mat-icon>
+                    Agendar cita
+                </button>
             </div>
         </div>
         <div class="inmueble-container">
